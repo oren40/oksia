@@ -5,9 +5,9 @@ import { MarketingHeader } from "@/components/marketing/MarketingHeader";
 
 export default function MarketingLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-dvh bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
+    <div className="flex min-h-dvh flex-col bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
       <MarketingHeader />
-      <main className="flex-1">{children}</main>
+      <main className="flex min-h-0 flex-1 flex-col">{children}</main>
       <MarketingFooter />
     </div>
   );

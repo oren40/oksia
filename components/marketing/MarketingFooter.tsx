@@ -57,10 +57,10 @@ export function MarketingFooter() {
                 WhatsApp
               </a>
               <a
-                href="mailto:hello@oksia.com"
+                href="mailto:info@oksia.ai"
                 className="hover:text-zinc-950 dark:hover:text-white"
               >
-                hello@oksia.com
+                info@oksia.ai
               </a>
             </div>
           </div>

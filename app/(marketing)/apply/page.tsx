@@ -69,7 +69,7 @@ function TextInput({
 export default function ApplyPage() {
   const calendlyUrl =
     process.env.NEXT_PUBLIC_CALENDLY_URL ??
-    "mailto:hello@oksia.com?subject=%D7%91%D7%93%D7%99%D7%A7%D7%AA%20%D7%94%D7%AA%D7%90%D7%9E%D7%94";
+    "mailto:info@oksia.ai?subject=%D7%91%D7%93%D7%99%D7%A7%D7%AA%20%D7%94%D7%AA%D7%90%D7%9E%D7%94";
   const whatsappUrl =
     process.env.NEXT_PUBLIC_WHATSAPP_URL ??
     "https://wa.me/972524157305";

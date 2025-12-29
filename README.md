@@ -330,4 +330,4 @@ Oren Peretz
 
 LinkedIn: https://www.linkedin.com/in/oren-peretz
 
-Email: oren.peretz40@gmail.com
+Email: info@oksia.ai

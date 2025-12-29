@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function ApplyThanksPage() {
   return (
-    <div className="bg-white py-20 dark:bg-zinc-950">
+    <div className="flex flex-1 items-center bg-white py-12 dark:bg-zinc-950 sm:py-16">
       <Container>
-        <div className="mx-auto max-w-2xl rounded-3xl border border-black/10 bg-zinc-50 p-10 text-center shadow-sm dark:border-white/10 dark:bg-white/5">
+        <div className="mx-auto max-w-2xl rounded-3xl border border-black/10 bg-zinc-50 p-8 text-center shadow-sm dark:border-white/10 dark:bg-white/5 sm:p-10">
           <div className="text-2xl font-semibold tracking-tight">
             קיבלנו. אנחנו חוזרים אליך בקרוב.
           </div>
