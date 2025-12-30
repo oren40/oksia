@@ -8,12 +8,10 @@ import {
   getDashboardTitle,
 } from "@/components/dashboard/dashboard-nav";
 import { cn } from "@/lib/cn";
-import { demoNotifications } from "@/lib/demo-data";
 
 export function DashboardTopbar() {
   const pathname = usePathname();
   const title = getDashboardTitle(pathname);
-  const notificationCount = demoNotifications.length;
 
   return (
     <header className="sticky top-0 z-40 border-b border-black/10 bg-white/80 backdrop-blur dark:border-white/10 dark:bg-zinc-950/70">
@@ -29,23 +27,39 @@ export function DashboardTopbar() {
             <div className="absolute right-0 mt-2 w-60 rounded-2xl border border-black/10 bg-white p-2 shadow-xl dark:border-white/10 dark:bg-zinc-950">
               <div className="grid gap-1">
                 {dashboardNavItems.map((item) => {
+                  const enabled = item.enabled !== false;
                   const isActive =
                     item.href === "/dashboard"
                       ? pathname === "/dashboard"
                       : pathname.startsWith(item.href);
 
+                  const className = cn(
+                    "flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold transition",
+                    isActive
+                      ? "bg-black/[0.04] text-zinc-950 dark:bg-white/5 dark:text-white"
+                      : "text-zinc-700 hover:bg-black/[0.04] dark:text-zinc-200 dark:hover:bg-white/5"
+                  );
+
+                  if (!enabled) {
+                    return (
+                      <div
+                        key={item.href}
+                        aria-disabled="true"
+                        className={cn(className, "cursor-not-allowed opacity-60 hover:bg-transparent")}
+                      >
+                        <span>{item.label}</span>
+                        {item.metaLabel ? (
+                          <span className="rounded-full bg-black/5 px-2 py-0.5 text-[11px] font-semibold text-zinc-700 ring-1 ring-black/10 dark:bg-white/10 dark:text-zinc-200 dark:ring-white/15">
+                            {item.metaLabel}
+                          </span>
+                        ) : null}
+                      </div>
+                    );
+                  }
+
                   return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={cn(
-                        "rounded-xl px-3 py-2 text-sm font-semibold transition",
-                        isActive
-                          ? "bg-black/[0.04] text-zinc-950 dark:bg-white/5 dark:text-white"
-                          : "text-zinc-700 hover:bg-black/[0.04] dark:text-zinc-200 dark:hover:bg-white/5"
-                      )}
-                    >
-                      {item.label}
+                    <Link key={item.href} href={item.href} className={className}>
+                      <span>{item.label}</span>
                     </Link>
                   );
                 })}
@@ -55,7 +69,7 @@ export function DashboardTopbar() {
 
           <div className="min-w-0">
             <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
-              אזור אישי
+              אזור אישי · דמו
             </div>
             <div className="truncate text-lg font-semibold tracking-tight">
               {title}
@@ -64,17 +78,12 @@ export function DashboardTopbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link
-            href="/dashboard/notifications"
-            className="relative hidden rounded-full px-4 py-2 text-sm font-semibold text-zinc-700 ring-1 ring-black/10 transition hover:bg-black/[0.04] dark:text-zinc-200 dark:ring-white/15 dark:hover:bg-white/5 sm:inline-flex"
+          <span
+            aria-disabled="true"
+            className="relative hidden cursor-not-allowed rounded-full px-4 py-2 text-sm font-semibold text-zinc-700 opacity-60 ring-1 ring-black/10 dark:text-zinc-200 dark:ring-white/15 sm:inline-flex"
           >
-            התראות
-            {notificationCount > 0 ? (
-              <span className="absolute -left-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-emerald-500 px-1.5 text-[11px] font-semibold text-white shadow-sm">
-                {notificationCount}
-              </span>
-            ) : null}
-          </Link>
+            התראות (בקרוב)
+          </span>
 
           <Link
             href="/apply"

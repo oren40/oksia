@@ -106,9 +106,9 @@ export default function DashboardOverviewPage() {
               כל מה שסיכמנו הופך לביצוע עם מעקב.
             </div>
           </Link>
-          <Link
-            href="/dashboard/ai"
-            className="rounded-3xl bg-zinc-50 p-5 text-sm shadow-sm ring-1 ring-black/10 transition hover:bg-white dark:bg-white/5 dark:ring-white/10 dark:hover:bg-white/10"
+          <div
+            aria-disabled="true"
+            className="cursor-not-allowed rounded-3xl bg-zinc-50 p-5 text-sm opacity-70 shadow-sm ring-1 ring-black/10 dark:bg-white/5 dark:ring-white/10"
           >
             <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-300">
               AI Center
@@ -117,7 +117,10 @@ export default function DashboardOverviewPage() {
             <div className="mt-1 text-xs leading-6 text-zinc-600 dark:text-zinc-300">
               פוסטים, מיילים ותסריטי וידאו לפי העסק שלך.
             </div>
-          </Link>
+            <div className="mt-3 text-xs font-semibold text-zinc-500 dark:text-zinc-300">
+              בקרוב
+            </div>
+          </div>
         </div>
       </div>
 
@@ -170,8 +173,8 @@ export default function DashboardOverviewPage() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <Pill label="פתוח" tone="info" />
-                  <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-semibold text-zinc-900 ring-1 ring-black/10 dark:bg-white/5 dark:text-white dark:ring-white/15">
-                    בקש עזרה
+                  <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-semibold text-zinc-900 opacity-70 ring-1 ring-black/10 dark:bg-white/5 dark:text-white dark:ring-white/15">
+                    בקש עזרה (בקרוב)
                   </span>
                 </div>
               </div>
@@ -183,12 +186,9 @@ export default function DashboardOverviewPage() {
           <div className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
             <div className="flex items-center justify-between gap-3">
               <div className="text-sm font-semibold">הפגישה הבאה</div>
-              <Link
-                href="/dashboard/sessions"
-                className="text-xs font-semibold text-emerald-700 hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-200"
-              >
-                כל הפגישות
-              </Link>
+              <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                כל הפגישות (בקרוב)
+              </span>
             </div>
 
             <div className="mt-4 rounded-2xl bg-zinc-50 p-4 text-sm dark:bg-white/5">
@@ -213,12 +213,9 @@ export default function DashboardOverviewPage() {
           <div className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
             <div className="flex items-center justify-between gap-3">
               <div className="text-sm font-semibold">שיעורים מומלצים</div>
-              <Link
-                href="/dashboard/courses"
-                className="text-xs font-semibold text-emerald-700 hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-200"
-              >
-                ספרייה מלאה
-              </Link>
+              <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                ספרייה מלאה (בקרוב)
+              </span>
             </div>
 
             <div className="mt-4 grid gap-3">

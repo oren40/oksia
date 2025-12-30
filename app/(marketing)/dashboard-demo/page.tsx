@@ -59,15 +59,17 @@ function DemoTask({ title, area, due, status }: DemoTaskProps) {
       <div className="flex flex-wrap gap-2">
         <button
           type="button"
+          disabled
           className="rounded-full bg-zinc-950 px-3 py-2 text-xs font-semibold text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
         >
-          סמן בוצע
+          סמן בוצע (בקרוב)
         </button>
         <button
           type="button"
+          disabled
           className="rounded-full bg-white px-3 py-2 text-xs font-semibold text-zinc-950 ring-1 ring-black/10 transition hover:bg-zinc-50 dark:bg-white/5 dark:text-white dark:ring-white/15 dark:hover:bg-white/10"
         >
-          בקש עזרה
+          בקש עזרה (בקרוב)
         </button>
       </div>
     </div>
@@ -132,26 +134,27 @@ export default function DashboardDemoPage() {
 
                 <div className="mt-8 grid gap-2 text-sm">
                   {[
-                    "Dashboard",
-                    "משימות",
-                    "פגישות",
-                    "קורסים",
-                    "AI Center",
-                    "קבצים",
-                    "מדדים",
-                    "פרופיל",
+                    { id: "dashboard", label: "Dashboard" },
+                    { id: "tasks", label: "משימות" },
+                    { id: "sessions", label: "פגישות" },
+                    { id: "courses", label: "קורסים" },
+                    { id: "ai", label: "AI Center" },
+                    { id: "files", label: "קבצים" },
+                    { id: "metrics", label: "מדדים" },
+                    { id: "profile", label: "פרופיל" },
                   ].map((item) => (
-                    <div
-                      key={item}
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
                       className={cn(
                         "rounded-2xl px-4 py-3 ring-1 ring-transparent transition",
-                        item === "Dashboard"
+                        item.id === "dashboard"
                           ? "bg-white/10 text-white ring-white/15"
                           : "text-zinc-200 hover:bg-white/5"
                       )}
                     >
-                      {item}
-                    </div>
+                      {item.label}
+                    </a>
                   ))}
                 </div>
 
@@ -168,25 +171,27 @@ export default function DashboardDemoPage() {
               </aside>
 
               <div className="flex-1 p-6 sm:p-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <div className="text-sm text-zinc-600 dark:text-zinc-300">
-                      ברוך הבא,
+                <div id="dashboard" className="scroll-mt-10">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <div className="text-sm text-zinc-600 dark:text-zinc-300">
+                        ברוך הבא,
+                      </div>
+                      <div className="mt-1 text-2xl font-semibold tracking-tight">
+                        אורן (דמו)
+                      </div>
+                      <div className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                        השבוע: 5 משימות פתוחות · פגישה אחת קרובה · 2 שיעורים מומלצים
+                      </div>
                     </div>
-                    <div className="mt-1 text-2xl font-semibold tracking-tight">
-                      אורן (דמו)
-                    </div>
-                    <div className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-                      השבוע: 5 משימות פתוחות · פגישה אחת קרובה · 2 שיעורים מומלצים
-                    </div>
-                  </div>
 
-                  <div className="rounded-2xl border border-black/10 bg-zinc-50 p-4 text-sm dark:border-white/10 dark:bg-white/5">
-                    <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
-                      הודעה אישית
-                    </div>
-                    <div className="mt-2 leading-6 text-zinc-700 dark:text-zinc-200">
-                      השבוע אנחנו סוגרים הצעה ותמחור, ומתחילים להרים משפך לידים.
+                    <div className="rounded-2xl border border-black/10 bg-zinc-50 p-4 text-sm dark:border-white/10 dark:bg-white/5">
+                      <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                        הודעה אישית
+                      </div>
+                      <div className="mt-2 leading-6 text-zinc-700 dark:text-zinc-200">
+                        השבוע אנחנו סוגרים הצעה ותמחור, ומתחילים להרים משפך לידים.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -216,7 +221,9 @@ export default function DashboardDemoPage() {
 
                 <div className="mt-8 grid gap-6 lg:grid-cols-3">
                   <div className="lg:col-span-2">
-                    <div className="text-sm font-semibold">המשימות הבאות</div>
+                    <div id="tasks" className="scroll-mt-10 text-sm font-semibold">
+                      המשימות הבאות
+                    </div>
                     <div className="mt-4 grid gap-3">
                       <DemoTask
                         title="לסגור הצעה ותמחור (גרסה 1)"
@@ -241,7 +248,9 @@ export default function DashboardDemoPage() {
 
                   <div className="grid gap-6">
                     <div className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
-                      <div className="text-sm font-semibold">הפגישה הבאה</div>
+                      <div id="sessions" className="scroll-mt-10 text-sm font-semibold">
+                        הפגישה הבאה
+                      </div>
                       <div className="mt-3 rounded-2xl bg-zinc-50 p-4 text-sm dark:bg-white/5">
                         <div className="font-semibold">שיחת ליווי שבועית</div>
                         <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-300">
@@ -250,9 +259,10 @@ export default function DashboardDemoPage() {
                       </div>
                       <button
                         type="button"
-                        className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-zinc-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+                        disabled
+                        className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-zinc-950 px-4 py-2.5 text-sm font-semibold text-white opacity-70 dark:bg-white dark:text-zinc-950"
                       >
-                        כניסה לפגישה
+                        כניסה לפגישה (בקרוב)
                       </button>
                       <div className="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
                         בדמו זה כפתור המחשה.
@@ -260,7 +270,9 @@ export default function DashboardDemoPage() {
                     </div>
 
                     <div className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
-                      <div className="text-sm font-semibold">AI Center</div>
+                      <div id="ai" className="scroll-mt-10 text-sm font-semibold">
+                        AI Center
+                      </div>
                       <div className="mt-4 grid gap-3 text-sm">
                         {[
                           {
@@ -288,6 +300,34 @@ export default function DashboardDemoPage() {
                         ))}
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                <div id="courses" className="mt-10 scroll-mt-10 rounded-3xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
+                  <div className="text-sm font-semibold">קורסים</div>
+                  <div className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                    (דמו) הספרייה והתוכן האישי ייבנו בשלב הבא.
+                  </div>
+                </div>
+
+                <div id="files" className="mt-6 scroll-mt-10 rounded-3xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
+                  <div className="text-sm font-semibold">קבצים</div>
+                  <div className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                    (דמו) העלאה, תיקיות והרשאות יתווספו בהמשך.
+                  </div>
+                </div>
+
+                <div id="metrics" className="mt-6 scroll-mt-10 rounded-3xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
+                  <div className="text-sm font-semibold">מדדים</div>
+                  <div className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                    (דמו) כאן יהיו KPI, הכנסות, לידים, יחס סגירה והתקדמות שבועית.
+                  </div>
+                </div>
+
+                <div id="profile" className="mt-6 scroll-mt-10 rounded-3xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
+                  <div className="text-sm font-semibold">פרופיל</div>
+                  <div className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                    (דמו) פרטי לקוח/עסק, מסלול ותשלומים.
                   </div>
                 </div>
               </div>

@@ -24,35 +24,50 @@ export function DashboardSidebar() {
           <div className="truncate text-sm font-semibold tracking-tight">
             oksia
           </div>
-          <div className="truncate text-xs text-zinc-300">אזור אישי</div>
+          <div className="truncate text-xs text-zinc-300">אזור אישי · דמו</div>
         </div>
       </Link>
 
       <nav className="mt-10 grid gap-1">
         {dashboardNavItems.map((item) => {
+          const enabled = item.enabled !== false;
           const isActive =
             item.href === "/dashboard"
               ? pathname === "/dashboard"
               : pathname.startsWith(item.href);
+
+          const baseClassName = cn(
+            "flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-semibold transition",
+            isActive
+              ? "bg-white/10 text-white ring-1 ring-white/15"
+              : "text-zinc-200 hover:bg-white/5 hover:text-white"
+          );
+
+          if (!enabled) {
+            return (
+              <div
+                key={item.href}
+                aria-disabled="true"
+                className={cn(baseClassName, "cursor-not-allowed opacity-60 hover:bg-transparent")}
+              >
+                <span>{item.label}</span>
+                {item.metaLabel ? (
+                  <span className="rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-semibold text-zinc-200 ring-1 ring-white/15">
+                    {item.metaLabel}
+                  </span>
+                ) : null}
+              </div>
+            );
+          }
 
           return (
             <Link
               key={item.href}
               href={item.href}
               aria-current={isActive ? "page" : undefined}
-              className={cn(
-                "flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-semibold transition",
-                isActive
-                  ? "bg-white/10 text-white ring-1 ring-white/15"
-                  : "text-zinc-200 hover:bg-white/5 hover:text-white"
-              )}
+              className={baseClassName}
             >
               <span>{item.label}</span>
-              {item.href === "/dashboard/tasks" ? (
-                <span className="inline-flex min-w-7 items-center justify-center rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-200 ring-1 ring-emerald-500/25">
-                  {openTasks}
-                </span>
-              ) : null}
             </Link>
           );
         })}

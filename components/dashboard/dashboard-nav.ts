@@ -1,18 +1,20 @@
 export type DashboardNavItem = {
   href: string;
   label: string;
+  enabled?: boolean;
+  metaLabel?: string;
 };
 
 export const dashboardNavItems: DashboardNavItem[] = [
-  { href: "/dashboard", label: "סקירה" },
-  { href: "/dashboard/tasks", label: "משימות" },
-  { href: "/dashboard/sessions", label: "פגישות" },
-  { href: "/dashboard/courses", label: "קורסים" },
-  { href: "/dashboard/ai", label: "AI Center" },
-  { href: "/dashboard/files", label: "קבצים" },
-  { href: "/dashboard/progress", label: "התקדמות" },
-  { href: "/dashboard/notifications", label: "התראות" },
-  { href: "/dashboard/profile", label: "פרופיל" },
+  { href: "/dashboard", label: "סקירה", enabled: true },
+  { href: "/dashboard/tasks", label: "משימות", enabled: true, metaLabel: "MVP" },
+  { href: "/dashboard/sessions", label: "פגישות", enabled: false, metaLabel: "בקרוב" },
+  { href: "/dashboard/courses", label: "קורסים", enabled: false, metaLabel: "בקרוב" },
+  { href: "/dashboard/ai", label: "AI Center", enabled: false, metaLabel: "בקרוב" },
+  { href: "/dashboard/files", label: "קבצים", enabled: false, metaLabel: "בקרוב" },
+  { href: "/dashboard/progress", label: "התקדמות", enabled: false, metaLabel: "בקרוב" },
+  { href: "/dashboard/notifications", label: "התראות", enabled: false, metaLabel: "בקרוב" },
+  { href: "/dashboard/profile", label: "פרופיל", enabled: false, metaLabel: "בקרוב" },
 ];
 
 const titleByHref: Record<string, string> = Object.fromEntries(

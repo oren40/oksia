@@ -18,8 +18,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <div className="mb-6 rounded-3xl border border-amber-500/20 bg-amber-500/10 p-5">
                 <div className="text-sm font-semibold">מצב דמו</div>
                 <div className="mt-1 text-sm leading-6 text-zinc-700 dark:text-zinc-200">
-                  זהו שלד MVP של האזור האישי. בשלב הבא נוסיף התחברות,
-                  הרשאות וחיבור למסד נתונים.
+                  כרגע זה דמו של דף הסקירה בלבד. שאר האזורים (משימות, פגישות,
+                  קורסים, AI וכו׳) ייפתחו בשלבים הבאים.
                 </div>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                   <Link
